@@ -15,9 +15,10 @@ Estrutura do Repositório
     * Two Sum: Encontre dois números em um array cuja soma seja igual a um valor alvo.
 
 E muitos mais! Sinta-se à vontade para adicionar seus próprios exercícios ou expandir a lista conforme você avança em sua jornada de programação.
-Contribuições
 
-## Contribuições são bem-vindas! Se você tem um novo exercício para adicionar ou encontrou um problema em uma solução existente, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+## Contribuições
+
+Contribuições são bem-vindas! Se você tem um novo exercício para adicionar ou encontrou um problema em uma solução existente, sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
 ## Licença
 
