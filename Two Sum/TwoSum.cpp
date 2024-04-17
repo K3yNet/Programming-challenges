@@ -4,7 +4,7 @@
 using namespace std;
 
 int target = 7;
-vector<int> nums = {2, 7, 11, 5, 8, 15, 3, 33};
+vector<int> nums = {2, 7, 11, 5, 8, 15, 3, 33, 125};
 unordered_map<int, int> hasher;
 
 int resultX, resultY;
