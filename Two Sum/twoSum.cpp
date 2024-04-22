@@ -1,3 +1,7 @@
+/*
+Feito por: Gustavo
+*/
+
 #include <iostream>
 #include <algorithm>
 #include <map>
