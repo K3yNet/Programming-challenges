@@ -1,75 +1,45 @@
-/*
-Feito por: Gustavo
-*/
-
 #include <iostream>
 #include <time.h>
 #include <vector>
 #include <tuple>
 #include <algorithm>
-
-#define N 10
-
 using namespace std;
 
-int* gerarVetorAleatorio(int tam, int seed = time(NULL), int min = 0, int max = 100){
-    int *vet = new int[tam];
+vector<int> nums = {-7, -4, -1, 2, -4, 3, 5, 5, 7, -9};
+vector<tuple<int, int, int>> result;
 
-    srand(seed);
-    for(int i=0; i<tam; i++){
-        vet[i] = (rand() % (max-min)) + min;
-    }
+int main(){
+    sort(nums.begin(), nums.end());
+    
+    for (int begginPointer = 0; begginPointer < nums.size() - 2; begginPointer++) {
+        
+        if (begginPointer > 0 && nums[begginPointer] == nums[begginPointer - 1])
+            continue;
 
-    return vet;
-}
+        int midPointer = begginPointer + 1;
+        int endPointer = nums.size() - 1;
 
-vector<tuple<int,int,int>> threeSum(int *vet){
-    sort(vet, vet+N);
-    //ordenar
-    vector<tuple<int,int,int>> res;
-    for(int i=0; i<N-2; i++){
-        while(vet[i] == vet[i-1]){
-            i++;
-        }
-        int j = i+1, k = N-1;
-        while(j < k){
-            int sum = vet[i] + vet[j] + vet[k];
-            if(sum == 0){
-                res.push_back(tuple<int,int,int>(vet[i], vet[j], vet[k]));
-                do{
-                    j++;
-                }while(vet[j] == vet[j-1] and j < k);
-                do{
-                    k--;
-                }while(vet[k] == vet[k+1] and k > j);
-            }
-            else if(sum < 0){
-                j++;
-            }
-            else{
-                k--;
+        while (midPointer < endPointer) {
+            int sum = nums[begginPointer] + nums[midPointer] + nums[endPointer];
+            if (sum == 0) {
+                result.push_back(make_tuple(nums[begginPointer], nums[midPointer], nums[endPointer]));
+
+                // Evitar duplicatas
+                while (midPointer < endPointer && nums[midPointer] == nums[midPointer + 1]) ++midPointer;
+                while (midPointer < endPointer && nums[endPointer] == nums[endPointer - 1]) --endPointer;
+
+                ++midPointer;
+                --endPointer;
+                
+            } else if (sum < 0) {
+                ++midPointer;
+            } else {
+                --endPointer;
             }
         }
     }
 
-    return res;
-}
-
-int main(int argc, char* argv[]){
-    int *vet = gerarVetorAleatorio(N, 1, -10, 10);
-
-    for(int i=0; i<N; i++)
-        cout << vet[i] << " ";
-    cout << endl;
-
-    vector<tuple<int,int,int>> res = threeSum(vet);
-
-    for(tuple<int,int,int> item : res){
+    for (const auto& item : result)
         cout << get<0>(item) << " " << get<1>(item) << " " << get<2>(item) << endl;
-    }
-    cout << endl;
 
-    delete [] vet;
-
-    return 0;
 }
