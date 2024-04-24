@@ -5,6 +5,7 @@
 #include <algorithm>
 using namespace std;
 
+const int target = 5;
 vector<int> nums = {-7, -4, -1, 2, -4, 3, 5, 5, 7, -9};
 vector<tuple<int, int, int>> result;
 
@@ -21,7 +22,7 @@ int main(){
 
         while (midPointer < endPointer) {
             int sum = nums[begginPointer] + nums[midPointer] + nums[endPointer];
-            if (sum == 0) {
+            if (sum == target) {
                 result.push_back(make_tuple(nums[begginPointer], nums[midPointer], nums[endPointer]));
 
                 // Evitar duplicatas
@@ -31,7 +32,7 @@ int main(){
                 ++midPointer;
                 --endPointer;
                 
-            } else if (sum < 0) {
+            } else if (sum < target) {
                 ++midPointer;
             } else {
                 --endPointer;
